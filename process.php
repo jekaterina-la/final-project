@@ -60,7 +60,7 @@ if (isset($_GET['checkbox'])) {
 }
 }
 
-//editCheck();
+editCheck();
 
 function updateCheck() {
     global $mysqli;
@@ -73,7 +73,7 @@ function updateCheck() {
     }
 }
 
-//updateCheck();
+updateCheck();
 
 function delete_data() {
     global $mysqli;

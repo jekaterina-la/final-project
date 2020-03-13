@@ -18,26 +18,7 @@ if(isset($_POST['update'])) {
       header("Location: index.php?message=update_success");
     }
 }
-
-if (isset($_GET['checkbox'])) {
-    $c_id = $_GET['checkbox'];
-    $sql = mysqli_query($mysqli, "SELECT * FROM data WHERE id=$c_id");
-    $row = mysqli_fetch_array($sql);
-    $completed = $row['completed'];
-} else {
-    header("Location: /final-project/index.php");
-}
-
-
-if (isset($_POST['checkbox'])) {
-    $c_completed = $_POST['completed'];
-    $query = mysqli_query($mysqli, "UPDATE data SET completed='$c_completed' WHERE id=$c_id");
-    if ($query) {
-        header("Location: /final-project/index.php?message=added_success");
-    }
-}
-
-      
+    
 ?>
 
 <!DOCTYPE html>
