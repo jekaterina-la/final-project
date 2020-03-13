@@ -24,7 +24,7 @@ function read() {
         $completed = $row['completed'];
     
         echo "<tr>
-              <td><input id='item1' name='item1' type='checkbox' value='{$completed}'></td>
+              <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='{$completed}'></td>
               <td><label for='item1'>{$task}</label></td>
               <td><a href = 'edit.php?edit={$id}' class='btn btn-primary'>Edit</a></td>
               <td><a href = 'index.php?delete={$id}' class='btn btn-danger'>Delete</a></td>
@@ -41,7 +41,7 @@ function readCheck() {
         $completed = $row['completed'];
     
         echo "<tr>
-              <td><input id='item1' name='item1' type='checkbox' value='{$completed}'></td>
+              <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='{$completed}'></td>
               <td><label for='item1'>{$task}</label></td>
               <td><a href = 'index.php?delete={$id}' class='btn btn-danger'>Delete</a></td>
               </tr>";
@@ -50,30 +50,29 @@ function readCheck() {
 
 function editCheck() {
     global $mysqli;
-if (isset($_GET['checkbox'])) {
-    $c_id = $_GET['checkbox'];
+    $c_id = $_GET['id'];
     $sql = mysqli_query($mysqli, "SELECT * FROM data WHERE id=$c_id");
     $row = mysqli_fetch_array($sql);
     $completed = $row['completed'];
-} else {
-    header("Location: /final-project/index.php");
-}
-}
+} 
 
-editCheck();
+if (isset($_GET['id'])) {
+   editCheck();
+}
 
 function updateCheck() {
     global $mysqli;
-    if (isset($_POST['checkbox'])) {
-        $c_completed = $_POST['completed'];
-        $query = mysqli_query($mysqli, "UPDATE data SET completed='$c_completed' WHERE id=$c_id");
-        if ($query) {
-            header("Location: /final-project/index.php?message=added_success");
-        }
+    $c_completed = $_GET['completed'];
+    $c_id = $_GET['id'];
+    $query = mysqli_query($mysqli, "UPDATE data SET completed='$c_completed' WHERE id=$c_id");
+    if ($query) {
+        header("Location: /final-project/index.php?message=added_success");
     }
 }
 
+if (isset($_GET['completed']) && $_GET['id']) {
 updateCheck();
+}
 
 function delete_data() {
     global $mysqli;
