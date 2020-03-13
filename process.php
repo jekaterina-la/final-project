@@ -17,7 +17,7 @@ create();
 
 function read() {
     global $mysqli;
-    $query = mysqli_query($mysqli, "SELECT * FROM data WHERE checked = FALSE ORDER BY id ASC");
+    $query = mysqli_query($mysqli, "SELECT * FROM data WHERE completed = FALSE ORDER BY id ASC");
     while ($row = mysqli_fetch_array($query)) {
         $task = $row['task'];
         $id = $row['id'];
@@ -34,7 +34,7 @@ function read() {
 
 function readCheck() {
     global $mysqli;
-    $query = mysqli_query($mysqli, "SELECT * FROM data WHERE checked = TRUE ORDER BY id ASC");
+    $query = mysqli_query($mysqli, "SELECT * FROM data WHERE completed = TRUE ORDER BY id ASC");
     while ($row = mysqli_fetch_array($query)) {
         $task = $row['task'];
         $id = $row['id'];
