@@ -21,10 +21,10 @@ function read() {
     while ($row = mysqli_fetch_array($query)) {
         $task = $row['task'];
         $id = $row['id'];
-        $completed = $row['completed'];
+       // $completed = $row['completed'];
     
         echo "<tr>
-              <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='{$completed}'></td>
+              <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='1'></td>
               <td><label for='item1'>{$task}</label></td>
               <td><a href = 'edit.php?edit={$id}' class='btn btn-primary'>Edit</a></td>
               <td><a href = 'index.php?delete={$id}' class='btn btn-danger'>Delete</a></td>
@@ -38,10 +38,10 @@ function readCheck() {
     while ($row = mysqli_fetch_array($query)) {
         $task = $row['task'];
         $id = $row['id'];
-        $completed = $row['completed'];
+       // $completed = $row['completed'];
     
         echo "<tr>
-              <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='{$completed}'></td>
+              <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='0' checked></td>
               <td><label for='item1'>{$task}</label></td>
               <td><a href = 'index.php?delete={$id}' class='btn btn-danger'>Delete</a></td>
               </tr>";
@@ -70,8 +70,8 @@ function updateCheck() {
     }
 }
 
-if (isset($_GET['completed']) && $_GET['id']) {
-updateCheck();
+if (isset($_GET['completed']) && ($_GET['id'])) {
+   updateCheck();
 }
 
 function delete_data() {

@@ -28,24 +28,29 @@ if(isset($_POST['update'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final project</title>
 
-    <link  
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-            rel="stylesheet" 
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
-            crossorigin="anonymous">
-
     <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous">
     </script>
 
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous">
+    </script>
+
+    <link  
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+            crossorigin="anonymous">
+
     <script 
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
             crossorigin="anonymous">
-    </script>
-    
+    </script>   
 </head>
 <body class="p-3">
     
@@ -53,10 +58,14 @@ if(isset($_POST['update'])) {
         <div class = "d-flex justify-content-center">
             <div class= "pr-5">
                 <table class = "table">
-                    <?php read(); ?>
+                    <tbody id="order">
+                        <?php read(); ?>
+                    </tbody>
                 </table>
                 <table class = "table">
-                    <?php readCheck(); ?>
+                    <tbody>
+                        <?php readCheck(); ?>
+                    </tbody>
                 </table>
             </div>
     
@@ -71,4 +80,24 @@ if(isset($_POST['update'])) {
         </div>
     </div>
 </body>
+<script>
+ $(document).ready(function(){
+    $('#order').sortable({
+        update: function(event, ui) {
+            var data_id_array = new Array();
+            $('#order tr').each(function() {
+                data_id_array.push($(this).attr("id"));
+            });
+            $.ajax({
+                url:"update.php",
+                method:"POST",
+                data:{data_id_array:data_id_array}
+            })
+        }
+    });
+}); 
+</script>
+<script 
+        src="/final-project/scripts.js">
+</script>
 </html>
