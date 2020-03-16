@@ -58,14 +58,10 @@ if(isset($_POST['update'])) {
         <div class = "d-flex justify-content-center">
             <div class= "pr-5">
                 <table class = "table">
-                    <tbody id="order">
                         <?php read(); ?>
-                    </tbody>
                 </table>
                 <table class = "table">
-                    <tbody>
                         <?php readCheck(); ?>
-                    </tbody>
                 </table>
             </div>
     
@@ -80,9 +76,10 @@ if(isset($_POST['update'])) {
         </div>
     </div>
 </body>
-<script>
+<!-- <script>
  $(document).ready(function(){
     $('#order').sortable({
+        placeholder: 'ui-state-highlight',
         update: function(event, ui) {
             var data_id_array = new Array();
             $('#order tr').each(function() {
@@ -96,7 +93,7 @@ if(isset($_POST['update'])) {
         }
     });
 }); 
-</script>
+</script> -->
 <script 
         src="/final-project/scripts.js">
 </script>

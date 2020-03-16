@@ -1,5 +1,4 @@
 <?php include 'process.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,22 +28,16 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" 
             crossorigin="anonymous">
     </script>
-    
-    
 </head>
 <body class="p-3">
     <div class = "container">
         <div class = "d-flex justify-content-center">
             <div class= "mr-5">
-                <table class = "table" id="order">
-                    <tbody id="order">
+                <table class = "table">
                         <?php read(); ?>
-                    </tbody>
                 </table>
                 <table class = "table">
-                    <tbody>
                         <?php readCheck(); ?>
-                    </tbody>
                 </table>
             </div>
   
@@ -59,9 +52,10 @@
         </div>
     </div>
 </body>
-<script>
+<!-- <script>
  $(document).ready(function(){
     $('#order').sortable({
+        placeholder: 'ui-state-highlight',
         update: function(event, ui) {
             var data_id_array = new Array();
             $('#order tr').each(function() {
@@ -76,7 +70,16 @@
     });
 }); 
 </script>
-
+<! <script>
+(document).ready(function(){
+    $('#sorted_table').sortable({
+        containerSelector:'table',
+        itemPath:'> tbody',
+        itemSelector: 'tr',
+        placeholder:'<tr class="placeholder"/>'
+    });
+});
+</script> -->
 <script 
         src="/final-project/scripts.js">
 </script>

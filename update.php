@@ -1,4 +1,4 @@
-<?php
+<!--</*?php
 
 $mysqli = new mysqli('mysql-server-80', 'root', 'root_password', 'web-bootcamp-db') or die(mysqli_connect_error($mysqli));
 

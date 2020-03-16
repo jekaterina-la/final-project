@@ -43,6 +43,9 @@ function readCheck() {
         echo "<tr>
               <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='0' checked></td>
               <td><label for='item1'>{$task}</label></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td><a href = 'index.php?delete={$id}' class='btn btn-danger'>Delete</a></td>
               </tr>";
     }
