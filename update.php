@@ -6,5 +6,5 @@ for($i = 0; $i<$_POST["data_id_array"]; $i++) {
     $query = "UPDATE data SET data_order = '".$i."' WHERE id = '".$_POST["data_id_array"][$i]."'";
     mysqli_query($mysqli, $query);
 }
-
+ 
 ?>

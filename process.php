@@ -6,9 +6,15 @@ function create() {
     global $mysqli;
     if (isset($_POST['save'])) {
         $task = $_POST['task'];
-        $query = mysqli_query($mysqli, "INSERT INTO data (task,data_order)  VALUES('$task',0)");
-       // var_dump($mysqli);
-       // var_dump($query);
+        $order = mysqli_query($mysqli, "SELECT data_order FROM data ORDER BY data_order DESC LIMIT 1");
+
+        while ($row = mysqli_fetch_array($order)) {
+            $dataOrder = $row['data_order'];
+        }
+
+        $dataOrder = $dataOrder + 1;
+        $query = mysqli_query($mysqli, "INSERT INTO data (task,data_order) VALUES('$task', '$dataOrder')");
+
         if ($query) {
             header("Location: /final-project/index.php?message=added_success");
         }
@@ -23,13 +29,12 @@ function read() {
     while ($row = mysqli_fetch_array($query)) {
         $task = $row['task'];
         $id = $row['id'];
-       // $completed = $row['completed'];
     
         echo "<tr>
               <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='1'></td>
               <td><label for='item1'>{$task}</label></td>
-              <td><a href = 'edit.php?edit={$id}' class='btn btn-primary'>Edit</a></td>
-              <td><a href = 'index.php?delete={$id}' class='btn btn-danger'>Delete</a></td>
+              <td><a href = 'edit.php?edit={$id}' class='btn btn-success'>Edit</a></td>
+              <td><a href = 'index.php?delete={$id}' class='btn btn-warning'>Delete</a></td>
               </tr>";
     }
 }
@@ -40,15 +45,16 @@ function readCheck() {
     while ($row = mysqli_fetch_array($query)) {
         $task = $row['task'];
         $id = $row['id'];
-       // $completed = $row['completed'];
     
         echo "<tr>
               <td><input id='item1' data-id='{$id}' name='item1' type='checkbox' value='0' checked></td>
-              <td><label for='item1'>{$task}</label></td>
+              <td><label for='item1'><del>{$task}</del></label></td>
               <td></td>
               <td></td>
               <td></td>
-              <td><a href = 'index.php?delete={$id}' class='btn btn-danger'>Delete</a></td>
+              <td></td>
+              <td></td>
+              <td><a href = 'index.php?delete={$id}' class='btn btn-warning'>Delete</a></td>
               </tr>";
     }
 }

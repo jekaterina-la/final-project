@@ -1,4 +1,5 @@
 <?php include 'process.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +30,7 @@
             crossorigin="anonymous">
     </script>
 </head>
+
 <body class="p-3">
     <div class = "container">
         <div class = "d-flex justify-content-center">
@@ -56,6 +58,7 @@
         </div>
     </div>
 </body>
+
 <script>
  $(document).ready(function(){
     $('#order').sortable({
@@ -64,6 +67,7 @@
             var data_id_array = new Array();
             $('#order tr').each(function() {
                 data_id_array.push($(this).attr("id"));
+                var_dump($mysqli)
             });
             $.ajax({
                 url:"update.php",
@@ -74,16 +78,6 @@
     });
 }); 
 </script>
-<!-- <script>
-(document).ready(function(){
-    $('#sorted_table').sortable({
-        containerSelector:'table',
-        itemPath:'> tbody',
-        itemSelector: 'tr',
-        placeholder:'<tr class="placeholder"/>'
-    });
-});
-</script> -->
 <script 
         src="/final-project/scripts.js">
 </script>

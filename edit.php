@@ -52,8 +52,8 @@ if(isset($_POST['update'])) {
             crossorigin="anonymous">
     </script>   
 </head>
+
 <body class="p-3">
-    
     <div class = "container">
         <div class = "d-flex justify-content-center">
             <div class= "pr-5">
@@ -74,13 +74,13 @@ if(isset($_POST['update'])) {
                     <input type="text" class= "form-control" name= "task" value = "<?= $task; ?>">
                 </div>
                 <div class = "form-group">
-                    <input type="submit" class="btn btn-primary" name="update" value="update">
+                    <input type="submit" class="btn btn-info" name="update" value="update">
                 </div>
             </form> 
         </div>
     </div>
 </body>
-<!-- <script>
+<script>
  $(document).ready(function(){
     $('#order').sortable({
         placeholder: 'ui-state-highlight',
@@ -97,7 +97,7 @@ if(isset($_POST['update'])) {
         }
     });
 }); 
-</script> -->
+</script>
 <script 
         src="/final-project/scripts.js">
 </script>
