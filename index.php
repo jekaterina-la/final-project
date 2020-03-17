@@ -34,10 +34,14 @@
         <div class = "d-flex justify-content-center">
             <div class= "mr-5">
                 <table class = "table">
+                    <tbody id="order">
                         <?php read(); ?>
+                    </tbody>
                 </table>
                 <table class = "table">
+                    <tbody>
                         <?php readCheck(); ?>
+                    </tbody>
                 </table>
             </div>
   
@@ -52,7 +56,7 @@
         </div>
     </div>
 </body>
-<!-- <script>
+<script>
  $(document).ready(function(){
     $('#order').sortable({
         placeholder: 'ui-state-highlight',
@@ -70,7 +74,7 @@
     });
 }); 
 </script>
-<! <script>
+<!-- <script>
 (document).ready(function(){
     $('#sorted_table').sortable({
         containerSelector:'table',

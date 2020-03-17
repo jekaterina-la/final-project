@@ -58,10 +58,14 @@ if(isset($_POST['update'])) {
         <div class = "d-flex justify-content-center">
             <div class= "pr-5">
                 <table class = "table">
+                    <tbody id="order">
                         <?php read(); ?>
+                    </tbody>
                 </table>
                 <table class = "table">
+                    <tbody>
                         <?php readCheck(); ?>
+                    </tbody>
                 </table>
             </div>
     

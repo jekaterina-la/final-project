@@ -6,7 +6,9 @@ function create() {
     global $mysqli;
     if (isset($_POST['save'])) {
         $task = $_POST['task'];
-        $query = mysqli_query($mysqli, "INSERT INTO data (task) VALUES('$task');");
+        $query = mysqli_query($mysqli, "INSERT INTO data (task,data_order)  VALUES('$task',0)");
+       // var_dump($mysqli);
+       // var_dump($query);
         if ($query) {
             header("Location: /final-project/index.php?message=added_success");
         }
@@ -17,7 +19,7 @@ create();
 
 function read() {
     global $mysqli;
-    $query = mysqli_query($mysqli, "SELECT * FROM data WHERE completed = FALSE ORDER BY id ASC");
+    $query = mysqli_query($mysqli, "SELECT * FROM data WHERE completed = FALSE ORDER BY data_order ASC");
     while ($row = mysqli_fetch_array($query)) {
         $task = $row['task'];
         $id = $row['id'];
